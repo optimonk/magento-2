@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+>
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Wse\OptiMonk\Block\Cart" name="optimonk_cart" as="optimonk_cart" template="cart.phtml"/>
+            <!--<block class="wse\OptiMonk\Block\CustomVariables" name="optimonk_custom_variables" as="optimonk_custom_variables" template="custom_variables.phtml"/>-->
+            <block class="Wse\OptiMonk\Block\OptiMonk" name="optimonk_snippet" as="optimonk_snippet" template="optimonk.phtml" cacheable="false" />
+        </referenceContainer>
+    </body>
+</page>

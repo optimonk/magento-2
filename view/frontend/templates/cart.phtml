@@ -1,0 +1,36 @@
+<?php
+/**
+ * OptiMonk - Magento 2 Module
+ *
+ * Copyright (C) 2016 OptiMonk
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * For a copy of the GNU General Public License, see <http://www.gnu.org/licenses/>.
+ *
+ * @author     Tibor Berna
+ * @since       2016-07-29
+ */
+?>
+<?php /** @var $block \Wse\OptiMonk\Block\Cart */ ?>
+<?php $cartProducts = $block->getProducts(); ?>
+<script>
+    document.querySelector('html').addEventListener('optimonk#ready', function () {
+        var adapter = OptiMonk.Visitor.createAdapter();
+        adapter.Cart.clear();
+        <?php if(!empty($cartProducts)): ?>
+            <?php foreach ($cartProducts as $sku => $productDetails) { ?>
+                adapter.Cart.add(<?php echo json_encode($sku); ?>, <?php echo json_encode($productDetails); ?>);
+            <?php } ?>
+        <?php endif; ?>
+    });
+</script>
+
