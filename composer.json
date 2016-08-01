@@ -1,5 +1,5 @@
 {
-    "name": "wse/module-optimonk",
+    "name": "wse/optimonk",
     "description": "OptiMonk module for Magento 2",
     "type": "magento2-module",
     "version": "1.0.0",
