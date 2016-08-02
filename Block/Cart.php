@@ -34,17 +34,17 @@ class Cart extends Template
     /**
      * @var array
      */
-    protected $_variables = array();
+    protected $variables = [];
 
     /**
      * @var \Wse\OptiMonk\Helper\Data
      */
-    protected $_omHelper = null;
+    protected $omHelper = null;
 
     /**
      * @var \Magento\Cookie\Helper\Cookie
      */
-    protected $_cookieHelper = null;
+    protected $cookieHelper = null;
 
     /**
      * @var MagentoCart
@@ -64,8 +64,8 @@ class Cart extends Template
         MagentoCart $cart,
         array $data = []
     ) {
-        $this->_cookieHelper= $cookieHelper;
-        $this->_omHelper   = $omHelper;
+        $this->cookieHelper= $cookieHelper;
+        $this->omHelper   = $omHelper;
         $this->cart = $cart;
         parent::__construct($context, $data);
     }
@@ -75,7 +75,7 @@ class Cart extends Template
      */
     protected function _toHtml()
     {
-        if ($this->_cookieHelper->isUserNotAllowSaveCookie() || !$this->_omHelper->isEnabled()) {
+        if ($this->cookieHelper->isUserNotAllowSaveCookie() || !$this->omHelper->isEnabled()) {
             return '';
         }
 
@@ -91,25 +91,24 @@ class Cart extends Template
     {
         /** @var Item $item */
         foreach ($this->cart->getQuote()->getAllVisibleItems() as $item) {
-
             $product = $item->getProduct();
 
-            $this->_variables[$item->getSku()] = array(
+            $this->variables[$item->getSku()] = [
                 "product_id" => $product->getId(),
                 "name" => $product->getName(),
                 "price" => $item->getPrice(),
                 "row_total" => $item->getRowTotal(),
                 "quantity" => $item->getQty(),
                 "category_ids" => "|" . implode("|", $product->getCategoryIds()) . "|"
-            );
+            ];
         }
-        return $this->_variables;
+        return $this->variables;
     }
 
     public function addVariable($name, $value)
     {
         if (!empty($name) && !empty($value)) {
-            $this->_variables[$name] = $value;
+            $this->variables[$name] = $value;
         }
     }
 }

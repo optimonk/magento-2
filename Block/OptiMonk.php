@@ -31,12 +31,12 @@ class OptiMonk extends Template
     /**
      * @var \Wse\OptiMonk\Helper\Data
      */
-    protected $_optiMonkHelper = null;
+    protected $optiMonkHelper = null;
 
     /**
      * @var \Magento\Cookie\Helper\Cookie
      */
-    protected $_cookieHelper = null;
+    protected $cookieHelper = null;
 
     /**
      * @param Context $context
@@ -50,8 +50,8 @@ class OptiMonk extends Template
         OptiMonkHelper $optiMonkHelper,
         array $data = []
     ) {
-        $this->_cookieHelper = $cookieHelper;
-        $this->_optiMonkHelper = $optiMonkHelper;
+        $this->cookieHelper = $cookieHelper;
+        $this->optiMonkHelper = $optiMonkHelper;
         parent::__construct($context, $data);
     }
 
@@ -62,7 +62,7 @@ class OptiMonk extends Template
      */
     public function getAccountId()
     {
-        return $this->_optiMonkHelper->getAccountId();
+        return $this->optiMonkHelper->getAccountId();
     }
 
     /**
@@ -71,8 +71,8 @@ class OptiMonk extends Template
     protected function _toHtml()
     {
         if (
-            $this->_cookieHelper->isUserNotAllowSaveCookie()
-            || !$this->_optiMonkHelper->isEnabled()
+            $this->cookieHelper->isUserNotAllowSaveCookie()
+            || !$this->optiMonkHelper->isEnabled()
         ) {
             return '';
         }

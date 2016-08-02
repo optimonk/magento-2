@@ -15,5 +15,13 @@
         "psr-4": {
             "Wse\\OptiMonk\\": ""
         }
+    },
+    "extra": {
+        "map": [
+            [
+                "*",
+                "Wse/OptiMonk"
+            ]
+        ]
     }
 }
