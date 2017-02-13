@@ -1,0 +1,11 @@
+/**
+ * PluginSaveAfter
+ *
+ * @author Varró Dániel
+ * @since 2017.02.10. 16:34
+ */<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_wse_optimonk">
+        <observer name="plugin_save" instance="Wse\OptiMonk\Observer\PluginSaveAfter" />
+    </event>
+</config>
