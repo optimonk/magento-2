@@ -35,7 +35,7 @@ class PluginSaveAfter implements ObserverInterface
         $version = $productMetadata->getVersion();
 
         $optimonkHelper = $objectManager->get('Wse\OptiMonk\Helper\Data');
-        $id = $optimonkHelper->getAccountId();
+        $id = trim($optimonkHelper->getAccountId());
 
         $data = array(
             "user" => $id,

@@ -48,6 +48,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getAccountId()
     {
-        return $this->scopeConfig->getValue(self::XML_PATH_ACCOUNT, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return trim($this->scopeConfig->getValue(self::XML_PATH_ACCOUNT, \Magento\Store\Model\ScopeInterface::SCOPE_STORE));
     }
 }
