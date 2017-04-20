@@ -43,7 +43,7 @@ class PluginSaveAfter implements ObserverInterface
             "version" => $version
         );
 
-        $url = 'http://optimonk.fopi/apps/magento/connect';
+        $url = 'http://front.optimonk.hu/apps/magento/connect';
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -53,10 +53,5 @@ class PluginSaveAfter implements ObserverInterface
         curl_setopt($ch, CURLOPT_USERAGENT, "Magento OM plugin");
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ch);
-
-        echo '<pre>';
-        var_dump($response);
-        echo '</pre>';
-        die();
+        curl_exec($ch);
     }}
