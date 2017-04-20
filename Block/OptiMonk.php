@@ -62,7 +62,7 @@ class OptiMonk extends Template
      */
     public function getAccountId()
     {
-        return $this->optiMonkHelper->getAccountId();
+        return trim($this->optiMonkHelper->getAccountId());
     }
 
     /**
