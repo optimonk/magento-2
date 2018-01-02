@@ -4,8 +4,10 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
 >
     <body>
-        <referenceContainer name="after.body.start">
-            <block class="Wse\OptiMonk\Block\OptiMonk" name="optimonk_snippet" as="optimonk_snippet" template="optimonk.phtml"/>
+        <referenceContainer name="content">
+            <block class="Wse\OptiMonk\Block\Cart"
+                   name="cart.index"
+                   template="Wse_OptiMonk::cart.phtml" />
         </referenceContainer>
     </body>
 </page>
