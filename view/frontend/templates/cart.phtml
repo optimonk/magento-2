@@ -22,15 +22,12 @@
 ?>
 <?php /** @var $block \Wse\OptiMonk\Block\Cart */ ?>
 <?php $cartProducts = $block->getProducts(); ?>
-<script>
-    document.querySelector('html').addEventListener('optimonk#ready', function () {
-        var adapter = OptiMonk.Visitor.createAdapter();
-        adapter.Cart.clear();
-        <?php if (!empty($cartProducts)) : ?>
-            <?php foreach ($cartProducts as $sku => $productDetails) { ?>
-                adapter.Cart.add(<?php echo json_encode($sku); ?>, <?php echo json_encode($productDetails); ?>);
-            <?php } ?>
-        <?php endif; ?>
-    });
-</script>
-
+(function() {
+var adapter = OptiMonk.Visitor.createAdapter();
+adapter.Cart.clear();
+<?php if (!empty($cartProducts)) : ?>
+<?php foreach ($cartProducts as $sku => $productDetails) { ?>
+adapter.Cart.add(<?php echo json_encode($sku); ?>, <?php echo json_encode($productDetails); ?>);
+<?php } ?>
+<?php endif; ?>
+})();

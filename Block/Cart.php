@@ -1,14 +1,12 @@
 <?php
+
 namespace Wse\OptiMonk\Block;
 
-use Magento\Catalog\Model\Product;
 use Magento\Checkout\Model\Cart as MagentoCart;
-use Magento\Framework\App\ObjectManager;
+use Magento\Cookie\Helper\Cookie as CookieHelper;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
-use Magento\Cookie\Helper\Cookie as CookieHelper;
 use Magento\Quote\Model\Quote\Item;
-use Magento\TestFramework\Event\Magento;
 use Wse\OptiMonk\Helper\Data as OptiMonkHelper;
 
 /**
@@ -63,9 +61,10 @@ class Cart extends Template
         CookieHelper $cookieHelper,
         MagentoCart $cart,
         array $data = []
-    ) {
-        $this->cookieHelper= $cookieHelper;
-        $this->omHelper   = $omHelper;
+    )
+    {
+        $this->cookieHelper = $cookieHelper;
+        $this->omHelper = $omHelper;
         $this->cart = $cart;
         parent::__construct($context, $data);
     }
@@ -105,6 +104,10 @@ class Cart extends Template
         return $this->variables;
     }
 
+    /**
+     * @param $name
+     * @param $value
+     */
     public function addVariable($name, $value)
     {
         if (!empty($name) && !empty($value)) {
