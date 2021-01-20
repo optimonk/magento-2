@@ -2,7 +2,7 @@
 
 namespace Wse\OptiMonk\Block;
 
-use Magento\Checkout\Model\Cart as MagentoCart;
+use Magento\Checkout\Model\Session as Session;
 use Magento\Cookie\Helper\Cookie as CookieHelper;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
@@ -45,9 +45,9 @@ class Cart extends Template
     protected $cookieHelper = null;
 
     /**
-     * @var MagentoCart
+     * @var Session
      */
-    protected $cart;
+    protected $session;
 
     /**
      * @param Context $context
@@ -59,13 +59,13 @@ class Cart extends Template
         Context $context,
         OptiMonkHelper $omHelper,
         CookieHelper $cookieHelper,
-        MagentoCart $cart,
+        Session $session,
         array $data = []
     )
     {
         $this->cookieHelper = $cookieHelper;
         $this->omHelper = $omHelper;
-        $this->cart = $cart;
+        $this->session = $session;
         parent::__construct($context, $data);
     }
 
@@ -89,7 +89,7 @@ class Cart extends Template
     public function getProducts()
     {
         /** @var Item $item */
-        foreach ($this->cart->getQuote()->getAllVisibleItems() as $item) {
+        foreach ($this->session->getQuote()->getAllVisibleItems() as $item) {
             $product = $item->getProduct();
 
             $this->variables[$item->getSku()] = [
