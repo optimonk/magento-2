@@ -23,7 +23,14 @@
 <?php /** @var $block \Wse\OptiMonk\Block\OptiMonk */ ?>
 <!-- OptiMonk EntryCode -->
 <script type="text/javascript">
-    document.querySelector('html').addEventListener('optimonk#ready', function () {
+    document.querySelector('html').addEventListener('optimonk#campaigns_initialized', function () {
+        if (
+            OptiMonk.campaigns &&
+            !OptiMonk.campaigns.filter(campaign => campaign.hasVisitorCartRules()).length
+        ) {
+            return;
+        }
+
         OptiMonk.ajax.get("//" + window.location.host + "/optimonk/cart/index/", OptiMonk.addResponseToHead)
     });
     (function(e,a){
